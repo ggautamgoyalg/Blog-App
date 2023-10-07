@@ -5,7 +5,7 @@ require('dotenv').config()
 const { userRouter } = require("./routes/user-routes");
 const { blogRouter } = require("./routes/blog-routes");
 const cors = require('cors')
-const port = 3000;
+const port = process.env.PORT || 3000;
 const MongooseConnect = process.env.MONGO_URL;
 app.use(cors());
 app.use(express.json());
