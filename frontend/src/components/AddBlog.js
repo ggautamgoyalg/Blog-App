@@ -7,6 +7,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 const labelStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 
 function AddBlog() {
+  const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title : "",
@@ -22,7 +23,7 @@ function AddBlog() {
     const user = localStorage.getItem("userId");
     console.log(user);
     try{
-      const res = await axios.post(`http://localhost:3000/api/blog/add`, {title : inputs.title, description : inputs.description, imageUrl : inputs.image, user})
+      const res = await axios.post(`${baseUrl}/api/blog/add`, {title : inputs.title, description : inputs.description, imageUrl : inputs.image, user})
       alert("blog added succesfully");
 
       setInputs({title : "", description : "", image : ""});

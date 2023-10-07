@@ -5,12 +5,14 @@ import Loading from "./Loading";
 
 function Blogs() {
   // let blogs;
+  const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/blog");
+        console.log("get request to : ",`${baseUrl}/api/blog`)
+        const res = await axios.get(`${baseUrl}/api/blog`);
         setBlogs(res.data.blogs);
         console.log(res.data.blogs);
       } catch (err) {

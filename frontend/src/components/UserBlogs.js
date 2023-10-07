@@ -5,6 +5,8 @@ import Loading from "./Loading";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function UserBlogs() {
+  const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+  
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const userId = localStorage.getItem("userId");
@@ -14,7 +16,7 @@ function UserBlogs() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/blog/user/${userId}`
+          `${baseUrl}/api/blog/user/${userId}`
         );
         setBlogs(res.data.blogs);
         console.log(res.data.blogs);

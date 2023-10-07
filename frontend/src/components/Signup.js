@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const rootUrl = "http://localhost:3000";
+  const rootUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
   const navigate = useNavigate();
   const dispatch = useDispatch();
   

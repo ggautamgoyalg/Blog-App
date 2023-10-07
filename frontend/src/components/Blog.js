@@ -22,10 +22,12 @@ const Blog = ({ title, description, imageURL, userName,isUser,id}) => {
     navigate(`/myBlogs/${id}`);
   };
   const deleteRequest = async () => {
+    const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+  
     try{
-      console.log("trying to delete blog !!!", `http://localhost:3000/api/blog/delete/${id}`);
+      console.log("trying to delete blog !!!", `${baseUrl}/api/blog/delete/${id}`);
       const res = await axios
-      .delete(`http://localhost:3000/api/blog/delete/${id}`)
+      .delete(`${baseUrl}/api/blog/delete/${id}`)
 
       navigate("/add")
       navigate("/blogs");
